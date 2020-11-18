@@ -1,5 +1,6 @@
 FROM ubuntu:19.10
 ADD ./files/supervisor.sh /
+
 RUN apt-get update \
     && apt-get install -y wget lib32gcc1 lib32stdc++6 libcurl4 unzip locales \
     && wget -O /tmp/steamcmd_linux.tar.gz http://media.steampowered.com/installer/steamcmd_linux.tar.gz \
@@ -14,7 +15,9 @@ RUN apt-get update \
     && chown -R steam:steam /home/steam \
     && locale-gen en_US.UTF-8
 ADD ./files/ /tmp
-ENV CSS_HOSTNAME Counter-Strike Source Dedicated Server
+ADD belair_map/cstrike /opt/steam/css/cstrike
+
+ENV CSS_HOSTNAME JohaLamb
 ENV CSS_PASSWORD ""
 ENV RCON_PASSWORD somepassword
 VOLUME ["/var/css/cfg"]

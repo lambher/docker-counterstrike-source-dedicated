@@ -15,7 +15,9 @@ RUN apt-get update \
     && chown -R steam:steam /home/steam \
     && locale-gen en_US.UTF-8
 ADD ./files/ /tmp
-ADD belair_map/cstrike /opt/steam/css/cstrike
+ADD ./belair_map/cstrike/maps/* /opt/steam/css/cstrike/maps/
+ADD ./belair_map/cstrike/materials/* /opt/steam/css/cstrike/materials/
+
 
 ENV CSS_HOSTNAME JohaLamb
 ENV CSS_PASSWORD ""
